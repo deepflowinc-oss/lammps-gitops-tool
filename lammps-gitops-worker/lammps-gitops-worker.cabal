@@ -1,0 +1,122 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           lammps-gitops-worker
+version:        0.3.0.0
+description:    Please see the README on GitHub at <https://github.com/deepflowinc-oss/lammps-gitops-worker#readme>
+homepage:       https://github.com/deepflowinc-oss/lammps-gitops-worker#readme
+bug-reports:    https://github.com/deepflowinc-oss/lammps-gitops-worker/issues
+author:         DeepFlow, Inc.
+maintainer:     DeepFlow, Inc.
+copyright:      2023 (c) DeepFlow, Inc.
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/deepflowinc-oss/lammps-gitops-worker
+
+library
+  exposed-modules:
+      Development.LAMMPS.GitOps.Worker
+      Development.LAMMPS.GitOps.Worker.DVC
+      Development.LAMMPS.GitOps.Worker.Report
+      Development.LAMMPS.GitOps.Worker.Scheduling
+      Development.LAMMPS.GitOps.Worker.Toolchain
+      Development.LAMMPS.GitOps.Worker.Types
+      Development.LAMMPS.GitOps.Worker.Utils
+  other-modules:
+      Paths_lammps_gitops_worker
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , beam-core
+    , beam-sqlite-effectful
+    , blaze-markup
+    , bytestring
+    , cmark
+    , cmark-combinators
+    , containers
+    , dlist
+    , effectful
+    , effectful-core
+    , effectful-expiry
+    , effectful-extras
+    , effectful-github
+    , effectful-lens
+    , effectful-plugin
+    , filepath
+    , generic-lens
+    , github-rest
+    , job-schedulers-effectful
+    , job-schedulers-uge
+    , lammps-gitops-core
+    , language-bash
+    , lens
+    , log-effectful-extra
+    , lucid2
+    , mime-types
+    , neat-interpolation
+    , network-uri
+    , optparse-applicative
+    , path-tagged
+    , path-tagged-effectful
+    , random-effectful
+    , reflection
+    , regex-applicative-text
+    , resourcet-effectful
+    , s3-effectful
+    , safe-exceptions
+    , skylighting-core
+    , skylighting-format-blaze-html
+    , stm
+    , streaming-effectful
+    , streaming-http
+    , streaming-http-effectful
+    , streaming-s3
+    , text
+    , time
+    , time-effectful
+    , toml-parser
+    , transformers
+    , typed-process-effectful
+    , typed-process-effectful-extra
+    , unix
+    , unordered-containers
+    , yaml
+  default-language: Haskell2010
+
+executable lammops-worker
+  main-is: Main.hs
+  other-modules:
+      Paths_lammps_gitops_worker
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N3
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-worker
+  default-language: Haskell2010
+
+test-suite lammps-gitops-worker-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_lammps_gitops_worker
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-worker
+  default-language: Haskell2010

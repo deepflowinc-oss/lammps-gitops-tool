@@ -1,0 +1,12 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "(package\\.yaml|\\.l?hs)$",
+        "cmd": "find . -type f -name package.yaml -not -path '*/dist-*/*' -exec hpack {} \\;",
+        "isAsync": true
+      }
+    ]
+  },
+  "haskell.plugin.rename.config.crossModule": true
+}

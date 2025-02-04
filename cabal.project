@@ -1,0 +1,63 @@
+packages: */*.cabal
+
+source-repository-package
+  type: git
+  location: https://github.com/deepflowinc-oss/streaming-extras.git
+  tag: d651e6f0c65c764155a778780cf2770f28ae23de
+  subdir:
+    streaming-archive
+    streaming-http
+    streaming-s3
+    streaming-archive
+    streaming-SHA
+    streaming-http
+    streaming-servant-orphans
+
+source-repository-package
+  type: git
+  location: https://github.com/deepflowinc-oss/effectful-extras.git
+  tag: 05034974885f3300972dd2bddc68af3880c8d98e
+  subdir:
+    beam-sqlite-effectful
+    effectful-expiry
+    effectful-github
+    effectful-lens
+    log-effectful-extra
+    lukko-effectful
+    path-tagged-effectful
+    random-effectful
+    s3-effectful
+    streaming-effectful
+    streaming-http-effectful
+    time-effectful
+    typed-process-effectful-extra
+
+source-repository-package
+  type: git
+  location: https://github.com/deepflowinc-oss/hs-bash-script.git
+  tag: 881e791a68dc6170bbaab84b023c6a1005d3a6b5
+
+source-repository-package
+  type: git
+  location: https://github.com/deepflowinc-oss/cmark-combinators.git
+  tag: 39b868e7e143debb1208355d0b765312bd4f5ef3
+
+
+source-repository-package
+  type: git
+  location: https://github.com/tsani/servant-github-webhook.git
+  tag: 4160919432643e7f891dccf1ce5599264fe32795
+
+source-repository-package
+  type: git
+  location: https://github.com/Kleidukos/servant-effectful.git
+  tag: 21b5a1d7cb209f3b4594167bb0b5a8d632c8a8e1
+
+package cryptonite
+  flags: -support_sse -support_aesni
+
+package crypton
+  flags: -support_sse -support_aesni
+
+package bitvec
+  flags: -simd

@@ -1,0 +1,154 @@
+name:                lammps-gitops-daemon
+version:             0.3.0.0
+license:             AllRightsReserved
+author:              "DeepFlow, Inc."
+maintainer:          "DeepFlow, Inc."
+copyright:           "(c) 2023, DeepFlow, Inc."
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Math
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Some great library and/or tool made by DeepFlow, Inc.
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wunused-packages
+
+dependencies:
+- base >= 4.7 && < 5
+
+
+library:
+  source-dirs: src
+  dependencies:
+  - aeson
+  - barbies
+  - beam-core
+  - beam-migrate
+  - beam-sqlite
+  - beam-sqlite-effectful
+  - brick
+  - bytestring
+  - case-insensitive
+  - cmark-combinators
+  - containers
+  - deepseq
+  - direct-sqlite
+  - effectful
+  - effectful-core
+  - effectful-expiry
+  - effectful-extras
+  - effectful-github
+  - effectful-lens
+  - effectful-plugin
+  - filepath
+  - foldable1-classes-compat
+  - generic-lens
+  - github
+  - github-rest
+  - github-webhooks
+  - hashable
+  - higgledy
+  - http-client
+  - http-client-tls
+  - http-types
+  - jose
+  - jwt
+  - lammps-gitops-core
+  - lens
+  - log-effectful
+  - log-effectful-extra
+  - mmorph
+  - neat-interpolation
+  - nonce
+  - optparse-applicative
+  - path-tagged
+  - path-tagged-effectful
+  - pwstore-fast
+  - random-effectful
+  - reflection
+  - resourcet-effectful
+  - safe-exceptions
+  - servant
+  - servant-auth
+  - servant-auth-client
+  - servant-auth-server
+  - servant-client
+  - servant-effectful
+  - servant-github-webhook
+  - servant-server
+  - streaming
+  - streaming-bytestring
+  - streaming-effectful
+  - streaming-http-effectful
+  - streaming-servant-orphans
+  - text
+  - time
+  - time-effectful
+  - typed-process-effectful
+  - typed-process-effectful-extra
+  - unix
+  - vty
+  - vector
+  - wai
+  - wai-logger
+  - warp
+  - yaml
+
+executables:
+  lammopsd:
+    main:                Main.hs
+    source-dirs:         app/daemon
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-daemon
+
+  lammops-cli:
+    main:                Main.hs
+    source-dirs:         app/client
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-daemon
+
+  lammops-admin:
+    main:                Main.hs
+    source-dirs:         app/admin
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-daemon
+
+tests:
+  lammps-gitops-daemon-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-daemon

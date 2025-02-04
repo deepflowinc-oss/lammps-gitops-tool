@@ -1,0 +1,160 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           lammps-gitops-daemon
+version:        0.3.0.0
+description:    Some great library and/or tool made by DeepFlow, Inc.
+author:         DeepFlow, Inc.
+maintainer:     DeepFlow, Inc.
+copyright:      (c) 2023, DeepFlow, Inc.
+license:        AllRightsReserved
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+library
+  exposed-modules:
+      Development.LAMMPS.GitOps.API.Client
+      Development.LAMMPS.GitOps.API.Server
+      Development.LAMMPS.GitOps.API.Types
+      Development.LAMMPS.GitOps.App.Admin
+      Development.LAMMPS.GitOps.App.Client
+      Development.LAMMPS.GitOps.App.Daemon
+      Development.LAMMPS.GitOps.App.Daemon.Model
+      Development.LAMMPS.GitOps.Webhook.Server
+      Development.LAMMPS.GitOps.Webhook.SlashCommand
+  other-modules:
+      Paths_lammps_gitops_daemon
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages
+  build-depends:
+      aeson
+    , barbies
+    , base >=4.7 && <5
+    , beam-core
+    , beam-migrate
+    , beam-sqlite
+    , beam-sqlite-effectful
+    , brick
+    , bytestring
+    , case-insensitive
+    , cmark-combinators
+    , containers
+    , deepseq
+    , direct-sqlite
+    , effectful
+    , effectful-core
+    , effectful-expiry
+    , effectful-extras
+    , effectful-github
+    , effectful-lens
+    , effectful-plugin
+    , filepath
+    , foldable1-classes-compat
+    , generic-lens
+    , github
+    , github-rest
+    , github-webhooks
+    , hashable
+    , higgledy
+    , http-client
+    , http-client-tls
+    , http-types
+    , jose
+    , jwt
+    , lammps-gitops-core
+    , lens
+    , log-effectful
+    , log-effectful-extra
+    , mmorph
+    , neat-interpolation
+    , nonce
+    , optparse-applicative
+    , path-tagged
+    , path-tagged-effectful
+    , pwstore-fast
+    , random-effectful
+    , reflection
+    , resourcet-effectful
+    , safe-exceptions
+    , servant
+    , servant-auth
+    , servant-auth-client
+    , servant-auth-server
+    , servant-client
+    , servant-effectful
+    , servant-github-webhook
+    , servant-server
+    , streaming
+    , streaming-bytestring
+    , streaming-effectful
+    , streaming-http-effectful
+    , streaming-servant-orphans
+    , text
+    , time
+    , time-effectful
+    , typed-process-effectful
+    , typed-process-effectful-extra
+    , unix
+    , vector
+    , vty
+    , wai
+    , wai-logger
+    , warp
+    , yaml
+  default-language: Haskell2010
+
+executable lammops-admin
+  main-is: Main.hs
+  other-modules:
+      Paths_lammps_gitops_daemon
+  hs-source-dirs:
+      app/admin
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-daemon
+  default-language: Haskell2010
+
+executable lammops-cli
+  main-is: Main.hs
+  other-modules:
+      Paths_lammps_gitops_daemon
+  hs-source-dirs:
+      app/client
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-daemon
+  default-language: Haskell2010
+
+executable lammopsd
+  main-is: Main.hs
+  other-modules:
+      Paths_lammps_gitops_daemon
+  hs-source-dirs:
+      app/daemon
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-daemon
+  default-language: Haskell2010
+
+test-suite lammps-gitops-daemon-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_lammps_gitops_daemon
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , lammps-gitops-daemon
+  default-language: Haskell2010

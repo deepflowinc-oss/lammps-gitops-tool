@@ -1,0 +1,89 @@
+name:                lammps-gitops-core
+version:             0.3.0.0
+license:             AllRightsReserved
+author:              "DeepFlow, Inc."
+maintainer:          "DeepFlow, Inc."
+copyright:           "(c) 2023, DeepFlow, Inc."
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Math
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Some great library and/or tool made by DeepFlow, Inc.
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wunused-packages
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - aeson
+  - beam-core
+  - beam-migrate
+  - beam-sqlite
+  - beam-sqlite-effectful
+  - containers
+  - deepseq
+  - effectful
+  - effectful-core
+  - effectful-github
+  - filepath
+  - generic-lens
+  - githash
+  - hashable
+  - job-schedulers-core
+  - lens
+  - log-effectful
+  - log-effectful-extra
+  - network-uri
+  - optparse-applicative
+  - path-tagged
+  - path-tagged-effectful
+  - random-effectful
+  - reflection
+  - safe-exceptions
+  - semigroupoids
+  - servant
+  - sqlite-simple
+  - streaming-archive
+  - streaming-bytestring
+  - streaming-effectful
+  - streaming-s3
+  - streaming-utils
+  - template-haskell
+  - text
+  - time
+  - transformers
+  - unordered-containers
+  - vector
+  - yaml
+
+tests:
+  lammps-gitops-core-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-core

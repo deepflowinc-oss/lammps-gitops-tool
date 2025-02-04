@@ -1,0 +1,116 @@
+name:                lammps-gitops-worker
+version:             0.3.0.0
+github:              "deepflowinc-oss/lammps-gitops-worker"
+license:             BSD3
+author:              "DeepFlow, Inc."
+maintainer:          "DeepFlow, Inc."
+copyright:           "2023 (c) DeepFlow, Inc."
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/deepflowinc-oss/lammps-gitops-worker#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wunused-packages
+
+library:
+  source-dirs: src
+  dependencies:
+  - aeson
+  - beam-core
+  - beam-sqlite-effectful
+  - blaze-markup
+  - bytestring
+  - cmark
+  - cmark-combinators
+  - containers
+  - dlist
+  - effectful
+  - effectful-core
+  - effectful-expiry
+  - effectful-extras
+  - effectful-github
+  - effectful-lens
+  - effectful-plugin
+  - safe-exceptions
+  - filepath
+  - generic-lens
+  - github-rest
+  - job-schedulers-uge
+  - job-schedulers-effectful
+  - lammps-gitops-core
+  - language-bash
+  - lens
+  - log-effectful-extra
+  - lucid2
+  - mime-types
+  - neat-interpolation
+  - optparse-applicative
+  - path-tagged
+  - path-tagged-effectful
+  - random-effectful
+  - reflection
+  - resourcet-effectful
+  - regex-applicative-text
+  - s3-effectful
+  - skylighting-core
+  - skylighting-format-blaze-html
+  - stm
+  - streaming-s3
+  - streaming-effectful
+  - streaming-http
+  - streaming-http-effectful
+  - text
+  - time
+  - time-effectful
+  - transformers
+  - toml-parser
+  - typed-process-effectful
+  - typed-process-effectful-extra
+  - unix
+  - unordered-containers
+  - network-uri
+  - yaml
+
+executables:
+  lammops-worker:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N3
+    dependencies:
+    - lammps-gitops-worker
+
+tests:
+  lammps-gitops-worker-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lammps-gitops-worker

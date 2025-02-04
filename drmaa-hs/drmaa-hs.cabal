@@ -1,0 +1,136 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           drmaa-hs
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/deepflowinc-oss/drmaa-hs#readme>
+homepage:       https://github.com/deepflowinc-oss/drmaa-hs#readme
+bug-reports:    https://github.com/deepflowinc-oss/drmaa-hs/issues
+author:         DeepFlow, Inc.
+maintainer:     DeepFlow, Inc.
+copyright:      2023 (c) DeepFlow, Inc.
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/deepflowinc-oss/drmaa-hs
+
+library
+  exposed-modules:
+      Development.Job.DRMAA.V2
+      Development.Job.DRMAA.V2.HighLevel
+      Development.Job.DRMAA.V2.HighLevel.Classes
+      Development.Job.DRMAA.V2.HighLevel.Job
+      Development.Job.DRMAA.V2.HighLevel.JobSession
+      Development.Job.DRMAA.V2.HighLevel.MonitorSession
+      Development.Job.DRMAA.V2.LowLevel
+      Development.Job.DRMAA.V2.LowLevel.Context
+      Development.Job.DRMAA.V2.LowLevel.Dict
+      Development.Job.DRMAA.V2.LowLevel.Error
+      Development.Job.DRMAA.V2.LowLevel.ImplementationSpecific
+      Development.Job.DRMAA.V2.LowLevel.ImplementationSpecific.TH
+      Development.Job.DRMAA.V2.LowLevel.Job
+      Development.Job.DRMAA.V2.LowLevel.JobSession
+      Development.Job.DRMAA.V2.LowLevel.List
+      Development.Job.DRMAA.V2.LowLevel.MonitorSession
+      Development.Job.DRMAA.V2.LowLevel.String
+      Development.Job.DRMAA.V2.LowLevel.Types
+      Development.Job.DRMAA.V2.LowLevel.Types.Basic
+      Development.Job.DRMAA.V2.LowLevel.Types.Enums
+      Development.Job.DRMAA.V2.LowLevel.Types.Misc
+      Development.Job.DRMAA.V2.LowLevel.Types.OpaqueStructs
+      Development.Job.DRMAA.V2.Managed
+      Foreign.C.Enum.TH
+      Foreign.C.HKD
+  other-modules:
+      Paths_drmaa_hs
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages
+  include-dirs:
+      include
+  extra-libraries:
+      drmaa2
+  build-depends:
+      aeson
+    , barbies
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , derive-storable
+    , derive-storable-plugin
+    , hashable
+    , inline-c
+    , safe-exceptions
+    , semigroups
+    , template-haskell
+    , text
+    , time
+    , transformers
+    , unordered-containers
+    , vector
+  default-language: Haskell2010
+
+executable drmaa-hs-smoke
+  main-is: Main.hs
+  other-modules:
+      Paths_drmaa_hs
+  hs-source-dirs:
+      app/smoke
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  include-dirs:
+      include
+  build-tool-depends:
+      tasty-discover:tasty-discover
+  build-depends:
+      aeson
+    , barbies
+    , base >=4.7 && <5
+    , bytestring
+    , directory
+    , drmaa-hs
+    , filepath
+    , optparse-applicative
+    , rio
+    , text
+    , time
+    , vector
+    , yaml
+  default-language: Haskell2010
+
+test-suite drmaa-hs-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Development.Job.DRMAA.V2.LowLevel.ListSpec
+      Development.Job.DRMAA.V2.LowLevel.StringSpec
+      Development.Job.DRMAA.V2.LowLevel.TypesSpec
+      Paths_drmaa_hs
+  hs-source-dirs:
+      tests/unit
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wunused-packages -threaded -rtsopts -with-rtsopts=-N
+  include-dirs:
+      include
+  build-tool-depends:
+      tasty-discover:tasty-discover
+  build-depends:
+      aeson
+    , barbies
+    , base >=4.7 && <5
+    , bytestring
+    , drmaa-hs
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
+    , vector
+  default-language: Haskell2010
